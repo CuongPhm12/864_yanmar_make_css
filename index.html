@@ -1,0 +1,340 @@
+<style>
+  body {
+    font-weight: bold;
+  }
+
+  #chart {
+    height: 100%; /* Make the chart div fill the available space */
+  }
+  .right-content2 {
+    background-color: #ffffff;
+  }
+
+  .tv_header {
+    display: flex;
+    justify-content: space-between; /* 요소 사이에 공간을 분배하여 정렬 */
+  }
+
+  .tv_header_text {
+    font-size: 15px;
+  }
+
+  .tv_header_refresh {
+    font-size: 20px;
+    color: red;
+  }
+  .div_search table {
+    width: 100%;
+    margin-bottom: 20px;
+  }
+  table {
+    border-collapse: collapse;
+  }
+
+  th,
+  td {
+    border: 1px solid #ddd;
+    padding: 8px;
+  }
+
+  tr {
+    border-bottom: 1px solid #ddd;
+  }
+
+  .header {
+    background-color: #fcf4cc;
+    text-align: center;
+  }
+  .cell_red {
+    background-color: red;
+    color: white;
+  }
+
+  .btn_toggle {
+    background-color: black;
+    color: white;
+  }
+  .cell_yellow {
+    background-color: yellow;
+  }
+  .text_red {
+    color: red;
+  }
+  .ar {
+    text-align: right;
+  }
+  .div_search,
+  .div_list,
+  .div_chart {
+    display: inline-block;
+
+    margin-right: 1%;
+    vertical-align: top;
+  }
+  .tv_content {
+    overflow: auto;
+  }
+</style>
+<div class="tv_header">
+  <div class="right-tap-btn ajaxsetx" id="search">
+    <span class="right-btn-text"
+      ><i class="fa fa-search" aria-hidden="true"></i> 조회</span
+    >
+  </div>
+  <div id="remain_date" class="tv_header_text">
+    새로고침 잔여시간
+    <span id="refresh_time" class="tv_header_refresh"></span>
+  </div>
+</div>
+<div class="tv_content">
+  <div class="div_search">
+    <table>
+      <tr>
+        <td style="background-color: #fcf4cc; text-align: center">구분</td>
+      </tr>
+      <tr>
+        <td>
+          <input
+            type="radio"
+            id="search_type_sale"
+            name="search_type"
+            value="sale"
+            checked
+          />
+          <label for="search_type_sale">매출</label><br />
+
+          <input
+            type="radio"
+            id="search_type_buy"
+            name="search_type"
+            value="buy"
+          />
+          <label for="search_type_buy">사입</label><br />
+
+          <input
+            type="radio"
+            id="search_type_stock"
+            name="search_type"
+            value="stock"
+          />
+          <label for="search_type_stock">재고</label>
+        </td>
+      </tr>
+    </table>
+
+    <table>
+      <tr>
+        <td style="background-color: #fcf4cc; text-align: center">대상년도</td>
+      </tr>
+      <tr>
+        <td>
+          <input type="radio" id="search_year0" name="search_year" value="" />
+          <label for="search_year0" id="search_year_label0"></label><br />
+
+          <input type="radio" id="search_year1" name="search_year" value="" />
+          <label for="search_year1" id="search_year_label1"></label><br />
+
+          <input type="radio" id="search_year2" name="search_year" value="" />
+          <label for="search_year2" id="search_year_label2"></label><br />
+
+          <input type="radio" id="search_year3" name="search_year" value="" />
+          <label for="search_year3" id="search_year_label3"></label><br />
+
+          <input
+            type="radio"
+            id="search_year4"
+            name="search_year"
+            value=""
+            checked
+          />
+          <label for="search_year4" id="search_year_label4"></label>
+        </td>
+      </tr>
+    </table>
+
+    <table>
+      <tr>
+        <td style="background-color: #fcf4cc; text-align: center">대상월</td>
+      </tr>
+      <tr>
+        <td>
+          <label for="search_month04">
+            <input
+              type="checkbox"
+              id="search_month04"
+              name="search_month"
+              value="04"
+              checked
+            />
+            04月 </label
+          ><br />
+
+          <label for="search_month05">
+            <input
+              type="checkbox"
+              id="search_month05"
+              name="search_month"
+              value="05"
+              checked
+            />
+            05月 </label
+          ><br />
+
+          <label for="search_month06">
+            <input
+              type="checkbox"
+              id="search_month06"
+              name="search_month"
+              value="06"
+              checked
+            />
+            06月 </label
+          ><br />
+
+          <label for="search_month07">
+            <input
+              type="checkbox"
+              id="search_month07"
+              name="search_month"
+              value="07"
+              checked
+            />
+            07月 </label
+          ><br />
+
+          <label for="search_month08">
+            <input
+              type="checkbox"
+              id="search_month08"
+              name="search_month"
+              value="08"
+              checked
+            />
+            08月 </label
+          ><br />
+
+          <label for="search_month09">
+            <input
+              type="checkbox"
+              id="search_month09"
+              name="search_month"
+              value="09"
+              checked
+            />
+            09月 </label
+          ><br />
+
+          <label for="search_month10">
+            <input
+              type="checkbox"
+              id="search_month10"
+              name="search_month"
+              value="10"
+              checked
+            />
+            10月 </label
+          ><br />
+
+          <label for="search_month11">
+            <input
+              type="checkbox"
+              id="search_month11"
+              name="search_month"
+              value="11"
+              checked
+            />
+            11月 </label
+          ><br />
+
+          <label for="search_month12">
+            <input
+              type="checkbox"
+              id="search_month12"
+              name="search_month"
+              value="12"
+              checked
+            />
+            12月 </label
+          ><br />
+
+          <label for="search_month01">
+            <input
+              type="checkbox"
+              id="search_month01"
+              name="search_month"
+              value="01"
+              checked
+            />
+            01月 </label
+          ><br />
+
+          <label for="search_month02">
+            <input
+              type="checkbox"
+              id="search_month02"
+              name="search_month"
+              value="02"
+              checked
+            />
+            02月 </label
+          ><br />
+
+          <label for="search_month03">
+            <input
+              type="checkbox"
+              id="search_month03"
+              name="search_month"
+              value="03"
+              checked
+            />
+            03月 </label
+          ><br />
+        </td>
+      </tr>
+    </table>
+  </div>
+
+  <div class="div_list">
+    <table id="list">
+      <tr class="header">
+        <td colspan="2" rowspan="3"></td>
+        <td colspan="11">매출</td>
+      </tr>
+      <tr class="header">
+        <td colspan="2">전년</td>
+        <td colspan="2">계획</td>
+        <td colspan="3" class="cell_red">실적</td>
+        <td colspan="2">VS 전년</td>
+        <td colspan="2">VS 계획</td>
+      </tr>
+      <tr class="header">
+        <td>댓수</td>
+        <td>금액</td>
+        <td>댓수</td>
+        <td>금액</td>
+        <td class="cell_red">댓수</td>
+        <td class="cell_red">금액</td>
+        <td class="cell_red">진척율</td>
+        <td>댓수</td>
+        <td>금액</td>
+        <td>댓수</td>
+        <td>금액</td>
+      </tr>
+    </table>
+  </div>
+
+  <div class="div_chart" style="margin-bottom: 200px">
+    <table>
+      <tr style="background-color: #fcf4cc">
+        <td id="total_title"></td>
+        <td id="total_amount" style="color: red"></td>
+        <td id="total_rate" style="color: red"></td>
+      </tr>
+      <tr>
+        <td colspan="3">
+          <div id="chart"></div>
+        </td>
+      </tr>
+    </table>
+  </div>
+</div>
